@@ -23,11 +23,10 @@ html{
     --color-mostly-white:#fefefe;
 
     --color-white:#ffffff;
-    
+
 }
 
 h1,h2,h3,h4{
-    font-family: "Space Mono",monospace;
     font-style: normal;
 }
 
@@ -45,4 +44,9 @@ h3{
 
 h4{
     font-size: clamp(1.3rem,2vw,2rem);
+}
+
+body{
+    background-color: var(--color-whitish-blue);
+    font-family: "Space Mono",monospace;
 }
