@@ -1,8 +1,14 @@
+import { useState } from "react"
+import Header from "./Header/Header"
 
 function App() {
+  const [mode,setMode] = useState("Light");
 
   return (
-    <h1>Git hub user search app</h1>
+    <div className="App">
+      <Header mode={mode}/>
+    
+    </div>
   )
 }
 
