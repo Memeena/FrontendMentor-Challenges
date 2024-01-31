@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Header from "./Header/Header"
 import Search from "./Search/Search";
+import "./index.css";
 
 function App() {
   const [mode,setMode] = useState("Light");

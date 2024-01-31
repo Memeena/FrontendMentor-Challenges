@@ -50,3 +50,11 @@ body{
     background-color: var(--color-whitish-blue);
     font-family: "Space Mono",monospace;
 }
+
+.App{
+    display: grid;
+    grid-template-rows: min-content min-content max-content;
+    gap: 2rem;
+    padding: 2.4rem 3.1rem;
+
+}
