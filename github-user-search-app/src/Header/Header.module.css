@@ -1,25 +1,33 @@
-.header{
-    justify-content: space-between;
-    align-items: center;
+.header {
+  justify-content: space-between;
+  align-items: center;
 }
 
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
 
-.heading{
-    font-weight: 700;
+.heading {
+  font-weight: 700;
 }
 
-.mode{
-    gap: 1rem;
-    cursor: pointer;
+.mode {
+  gap: 1rem;
+  cursor: pointer;
 }
 
-.modeName{
-    font-size: 1.3rem;
-    color: var(--color-light-medium-grey);
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 700;
+.modeName {
+  font-size: 1.3rem;
+  color: var(--color-light-medium-grey);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+}
+
+.modeName:hover {
+  color: #222731;
+}
+
+.modeImg {
+  fill: #222731;
 }
