@@ -1,0 +1,47 @@
+.result {
+  background-color: var(--color-white);
+  padding: 3.2rem 2.4rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.3rem;
+}
+
+.resultHeader {
+  display: grid;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: min-content 1fr;
+  padding-bottom: 1rem;
+}
+
+.image {
+  border-radius: 50%;
+  width: 7rem;
+  height: 7rem;
+}
+
+.userName {
+  color: var(--color-light-dark-grey);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.loginName,
+.joinDate,
+.bio {
+  font-size: 1.3rem;
+}
+.loginName {
+  color: var(--color-cobalt-blue);
+}
+
+.joinDate {
+  color: var(--color-light-grey);
+}
+
+.bio {
+  line-height: 2;
+}

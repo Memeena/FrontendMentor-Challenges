@@ -21,7 +21,7 @@ function App() {
         setSearchUser={setSearchUser}
         setResult={setResult}
       />
-      <Result result={result} />
+      {result && <Result result={result} />}
     </div>
   );
 }
