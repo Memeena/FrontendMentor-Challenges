@@ -21,25 +21,12 @@ export default function Search({ searchUser, setSearchUser, setResult }) {
       if (!data.message) {
         setResult(data);
       } else {
-        //Setting the Error state if there is no data available from the API
-        // console.log("error");
         setError("No results!");
         setResult("");
       }
     } catch (err) {
       console.log("no data");
       setError("No data available!");
-
-      //Setting the Error state if there is a different status code from the Fetch API function
-      // setErr((prev) => {
-      //   return {
-      //     ...prev,
-      //     err: true,
-      //     title: "Could not fetch from API",
-      //     message: err,
-      //     resolution: "Please try again later..",
-      //   };
-      // });
     }
   }
 
@@ -51,6 +38,7 @@ export default function Search({ searchUser, setSearchUser, setResult }) {
     if (!searchUser) {
       // setError({ error: true, msg: "Whoops, can't be empty..." });
       setResult("");
+      setError("No results!");
       return;
     }
 
@@ -73,7 +61,7 @@ export default function Search({ searchUser, setSearchUser, setResult }) {
           onChange={handleInputChange}
           value={searchUser}
           className={styles.input}></input>
-        {error && <span>{error}</span>}
+        {error && <span className={styles.error}>{error}</span>}
         <button className={styles.btn} onClick={handleSearchUser}>
           Search
         </button>
