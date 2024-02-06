@@ -45,3 +45,35 @@
 .bio {
   line-height: 2;
 }
+
+.repoDetails {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: var(--color-whitish-blue);
+  border-radius: 2rem;
+  padding: 1.8rem 1.5rem;
+}
+
+.repoDetails .repSub {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  color: var(--color-light-medium-grey);
+}
+
+.repoDetails .repSub span {
+  font-size: 1.6rem;
+  color: var(--color-light-dark-grey);
+  font-weight: 700;
+}
+
+.contactDetails {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2rem;
+}

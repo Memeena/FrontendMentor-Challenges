@@ -1,0 +1,11 @@
+.contactDet {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.3rem;
+  color: var(--color-light-medium-grey);
+}
+
+.notAvailable {
+  opacity: 0.5;
+}

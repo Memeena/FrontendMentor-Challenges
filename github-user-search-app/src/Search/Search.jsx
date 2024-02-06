@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import styles from "./Search.module.css";
 
 export default function Search({ searchUser, setSearchUser, setResult }) {
   const searchIcon = "../../assets/icon-search.svg";
+  const [error, setError] = useState("");
 
-  useEffect(() => {}, [searchUser]);
+  // useEffect(() => {}, [error]);
 
   function handleInputChange(e) {
+    setError("");
     setSearchUser(e.target.value);
   }
 
@@ -15,14 +17,18 @@ export default function Search({ searchUser, setSearchUser, setResult }) {
     try {
       const res = await fetch(`https://api.github.com/users/${user}`);
       const data = await res.json();
+      console.log(data);
       if (!data.message) {
         setResult(data);
       } else {
         //Setting the Error state if there is no data available from the API
-        console.log("error");
+        // console.log("error");
+        setError("No results!");
+        setResult("");
       }
     } catch (err) {
-      console.log("error");
+      console.log("no data");
+      setError("No data available!");
 
       //Setting the Error state if there is a different status code from the Fetch API function
       // setErr((prev) => {
@@ -44,7 +50,7 @@ export default function Search({ searchUser, setSearchUser, setResult }) {
     //If there is no word entered in the input field
     if (!searchUser) {
       // setError({ error: true, msg: "Whoops, can't be empty..." });
-      // setResult("");
+      setResult("");
       return;
     }
 
@@ -67,6 +73,7 @@ export default function Search({ searchUser, setSearchUser, setResult }) {
           onChange={handleInputChange}
           value={searchUser}
           className={styles.input}></input>
+        {error && <span>{error}</span>}
         <button className={styles.btn} onClick={handleSearchUser}>
           Search
         </button>
