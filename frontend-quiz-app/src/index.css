@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --color-blue: #a729f5;
+  --color-dark-grey: #313e51;
+  --color-medium-grey: #3b4d66;
+  --color-light-grey: #626c7f;
+  --color-very-light-grey: #abc1e1;
+  --color-mostly-white: #f4f6fa;
+  --color-white: #ffffff;
+  --color-green: #26d782;
+  --color-red: #ee5454;
+}
