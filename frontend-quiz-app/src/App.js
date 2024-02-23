@@ -1,21 +1,117 @@
 import { useReducer } from "react";
 import data from "./data/data.json";
+import Header from "./Header/Header";
+import Questions from "./Questions/Questions";
+import "./index.css";
 
 console.log(data);
 
 const initalState = {
   status: "ready",
   questions: data,
+  choosenTitle: null,
+  index: 0,
+  answer: null,
+  hasAnswered: false,
+  iscorrect: false,
+  noofcorrectanswers: 0,
 };
 
 function reducer(state, action) {
-  console.log(state, action);
+  // console.log(state, action);
+  switch (action.type) {
+    case "choosenTopic":
+      console.log(action.payload);
+      const choosenTitle = state.questions.quizzes[action.payload].title;
+      return {
+        ...state,
+        choosenTitle: choosenTitle,
+        status: "active",
+        questions: data.quizzes[action.payload],
+      };
+
+    case "checkAnswer":
+      console.log(
+        "checking answer",
+        state.index + 1,
+        state.questions.questions.length
+      );
+
+      return {
+        ...state,
+        hasAnswered: true,
+        iscorrect:
+          action.payload === state.questions.questions[state.index].answer,
+        status:
+          state.index + 1 === state.questions.questions.length
+            ? "finished"
+            : state.status,
+        noofcorrectanswers:
+          action.payload === state.questions.questions[state.index].answer
+            ? state.noofcorrectanswers + 1
+            : state.noofcorrectanswers,
+      };
+    case "nextQuestion":
+      console.log("next question");
+      return { ...state, index: state.index + 1, hasAnswered: false };
+    default:
+      throw new Error("Action unknown");
+  }
 }
+
 function App() {
-  const [state, dispatch] = useReducer(reducer, initalState);
+  const [
+    {
+      questions,
+      status,
+      choosenTitle,
+      index,
+      answer,
+      hasAnswered,
+      iscorrect,
+      noofcorrectanswers,
+    },
+    dispatch,
+  ] = useReducer(reducer, initalState);
+
   return (
     <div className="app">
-      <Header />
+      <div className="mode">
+        <img src={"./assets/images/icon-sun-light.svg"} alt="sun-icon" />
+        <div className="mode-wrapper">
+          <div className="mode-ball"></div>
+        </div>
+        <img src={"./assets/images/icon-moon-light.svg"} alt="moon-icon" />
+      </div>
+      {status === "ready" && (
+        <Header questions={questions} dispatch={dispatch} />
+      )}
+
+      {status === "active" && (
+        <div>
+          <img src={`${questions.icon}`} alt="icon" />
+
+          <p>{choosenTitle}</p>
+          <Questions
+            questions={questions.questions[index]}
+            numQuestions={questions.questions.length}
+            index={index}
+            dispatch={dispatch}
+            answer={answer}
+            hasAnswered={hasAnswered}
+            iscorrect={iscorrect}
+          />
+
+          {/* </Questions> */}
+        </div>
+      )}
+
+      {status === "finished" && (
+        <h1>
+          You have reached end of the quiz! scored {noofcorrectanswers} out of
+          {questions.questions.length}
+        </h1>
+      )}
     </div>
   );
 }

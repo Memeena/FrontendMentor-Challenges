@@ -20,4 +20,15 @@ html {
   --color-white: #ffffff;
   --color-green: #26d782;
   --color-red: #ee5454;
+  --color-background: #f4f6fa;
+}
+
+html {
+  background-color: var(--color-background);
+  /* background-color: red; */
+  background-image: url("../public/assets/images/pattern-background-desktop-light.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.app {
 }
