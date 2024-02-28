@@ -3,6 +3,9 @@ import data from "./data/data.json";
 import Header from "./Header/Header";
 import Questions from "./Questions/Questions";
 import "./index.css";
+import { ReactComponent as MoonLight } from "./assets/images/icon-moon-light.svg";
+import { ReactComponent as SunLight } from "./assets/images/icon-sun-light.svg";
+import Main from "./Main";
 
 console.log(data);
 
@@ -77,41 +80,43 @@ function App() {
   return (
     <div className="app">
       <div className="mode">
-        <img src={"./assets/images/icon-sun-light.svg"} alt="sun-icon" />
+        <SunLight className="icon-sun" />
         <div className="mode-wrapper">
           <div className="mode-ball"></div>
         </div>
-        <img src={"./assets/images/icon-moon-light.svg"} alt="moon-icon" />
+        <MoonLight className="icon-moon" />
       </div>
-      {status === "ready" && (
-        <Header questions={questions} dispatch={dispatch} />
-      )}
+      <Main className="main">
+        {status === "ready" && (
+          <Header questions={questions} dispatch={dispatch} />
+        )}
 
-      {status === "active" && (
-        <div>
-          <img src={`${questions.icon}`} alt="icon" />
+        {status === "active" && (
+          <div>
+            <img src={`${questions.icon}`} alt="icon" />
 
-          <p>{choosenTitle}</p>
-          <Questions
-            questions={questions.questions[index]}
-            numQuestions={questions.questions.length}
-            index={index}
-            dispatch={dispatch}
-            answer={answer}
-            hasAnswered={hasAnswered}
-            iscorrect={iscorrect}
-          />
+            <p>{choosenTitle}</p>
+            <Questions
+              questions={questions.questions[index]}
+              numQuestions={questions.questions.length}
+              index={index}
+              dispatch={dispatch}
+              answer={answer}
+              hasAnswered={hasAnswered}
+              iscorrect={iscorrect}
+            />
 
-          {/* </Questions> */}
-        </div>
-      )}
+            {/* </Questions> */}
+          </div>
+        )}
 
-      {status === "finished" && (
-        <h1>
-          You have reached end of the quiz! scored {noofcorrectanswers} out of
-          {questions.questions.length}
-        </h1>
-      )}
+        {status === "finished" && (
+          <h1>
+            You have reached end of the quiz! scored {noofcorrectanswers} out of
+            {questions.questions.length}
+          </h1>
+        )}
+      </Main>
     </div>
   );
 }

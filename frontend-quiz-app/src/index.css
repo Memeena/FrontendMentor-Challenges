@@ -21,6 +21,10 @@ html {
   --color-green: #26d782;
   --color-red: #ee5454;
   --color-background: #f4f6fa;
+  --color-light-brown: #fff1e9;
+  --color-light-green: #e0fdef;
+  --color-light-blue: #ebf0ff;
+  --color-light-purple: #f7e7ff;
 }
 
 html {
@@ -29,6 +33,45 @@ html {
   background-image: url("../public/assets/images/pattern-background-desktop-light.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  font-family: "Rubik", sans-serif;
 }
 .app {
+  padding: 9.7rem 14rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: min-content 1fr;
+  gap: 10rem;
+}
+
+.mode {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  justify-self: end;
+  align-self: self-start;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.mode-wrapper {
+  height: 2.8rem;
+  width: 4.8rem;
+  background-color: var(--color-blue);
+  border-radius: 2rem;
+  position: relative;
+}
+
+.mode-ball {
+  background-color: var(--color-white);
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  top: 0.3rem;
+  left: 0.5rem;
+}
+
+.main {
+  grid-row: 2/3;
+  grid-column: 1/-1;
 }

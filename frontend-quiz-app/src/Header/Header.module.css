@@ -1,0 +1,27 @@
+.header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.head {
+  font-size: 6.4rem;
+  font-weight: 300;
+  color: var(--color-dark-grey);
+  line-height: 1;
+}
+
+.headBold {
+  font-weight: 500;
+}
+
+.para {
+  justify-self: end;
+  color: var(--color-light-grey);
+  font-size: 2rem;
+  font-weight: 300;
+  font-style: italic;
+}
