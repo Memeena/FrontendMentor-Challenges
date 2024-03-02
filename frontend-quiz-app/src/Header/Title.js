@@ -11,6 +11,16 @@ export default function Title({ questions, dispatch }) {
             className={styles.titleImg}
             src={`${question.icon}`}
             alt="icon"
+            style={{
+              backgroundColor:
+                question.title === "HTML"
+                  ? "#FFF1e9"
+                  : question.title === "CSS"
+                  ? "#E0FDEF"
+                  : question.title === "JavaScript"
+                  ? "#EBF0FF"
+                  : "#F6E7FF",
+            }}
           />
           <p className={styles.titleName}>{question.title}</p>
         </div>

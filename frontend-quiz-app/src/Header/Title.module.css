@@ -17,3 +17,8 @@
   color: var(--color-dark-grey);
   font-size: 2.8rem;
 }
+
+.titleImg {
+  padding: 0.8rem;
+  border-radius: 1rem;
+}

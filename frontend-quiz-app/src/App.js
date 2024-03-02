@@ -62,6 +62,9 @@ function reducer(state, action) {
   }
 }
 
+// const iconbg = {
+// };
+
 function App() {
   const [
     {
@@ -77,8 +80,30 @@ function App() {
     dispatch,
   ] = useReducer(reducer, initalState);
 
+  const iconbg = {
+    backgroundColor:
+      questions.title === "HTML"
+        ? "#FFF1e9"
+        : questions.title === "CSS"
+        ? "#E0FDEF"
+        : questions.title === "Javascript"
+        ? "#EBF0FF"
+        : "#F6E7FF",
+  };
+
   return (
     <div className="app">
+      {status === "active" && (
+        <div className="choosenHeading">
+          <img
+            src={`${questions.icon}`}
+            style={iconbg}
+            alt="icon"
+            className="iconImage"
+          />
+          <p className="choosenTitle">{choosenTitle}</p>
+        </div>
+      )}
       <div className="mode">
         <SunLight className="icon-sun" />
         <div className="mode-wrapper">
@@ -93,9 +118,6 @@ function App() {
 
         {status === "active" && (
           <div>
-            <img src={`${questions.icon}`} alt="icon" />
-
-            <p>{choosenTitle}</p>
             <Questions
               questions={questions.questions[index]}
               numQuestions={questions.questions.length}
@@ -105,8 +127,6 @@ function App() {
               hasAnswered={hasAnswered}
               iscorrect={iscorrect}
             />
-
-            {/* </Questions> */}
           </div>
         )}
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./Question.module.css";
 
 export default function Questions({
   questions,
@@ -14,21 +15,20 @@ export default function Questions({
   const [answerClicked, setAnswerClicked] = useState("");
 
   return (
-    <div className="questions">
-      <p>
+    <div className={styles.questions}>
+      <h5 className={styles.qnNumber}>
         Question {index + 1} of {numQuestions}
-      </p>
-      <h1>{questions.question}</h1>
-      <div>
+      </h5>
+      <h2 className={styles.question}>{questions.question}</h2>
+      <progress
+        className={styles.progress}
+        max={numQuestions}
+        value={index + Number(answer !== null)}
+      />
+
+      <div className={styles.options}>
         {questions.options.map((option, index) => (
           <button
-            // className={`btn btn-option ${index === answer ? "answer" : ""} ${
-            //   hasAnswered
-            //     ? index === question.correctOption
-            //       ? "correct"
-            //       : "wrong"
-            //     : ""
-            // }`}
             key={option}
             disabled={hasAnswered}
             onClick={() => setAnswerClicked(option)}
@@ -36,6 +36,8 @@ export default function Questions({
             {option}
           </button>
         ))}
+      </div>
+      <div className={styles.button}>
         {hasAnswered && index + 1 < numQuestions ? (
           <button onClick={() => dispatch({ type: "nextQuestion" })}>
             Next Question
@@ -44,7 +46,10 @@ export default function Questions({
           <button
             onClick={() => {
               console.log(answerClicked);
-              return dispatch({ type: "checkAnswer", payload: answerClicked });
+              return dispatch({
+                type: "checkAnswer",
+                payload: answerClicked,
+              });
             }}
           >
             Submit answer
