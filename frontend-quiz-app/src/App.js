@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import data from "./data/data.json";
-import Header from "./Header/Header";
-import Questions from "./Questions/Questions";
+import Header from "./components/Header/Header";
+import Questions from "./components/Questions/Questions";
 import "./index.css";
 import { ReactComponent as MoonLight } from "./assets/images/icon-moon-light.svg";
 import { ReactComponent as SunLight } from "./assets/images/icon-sun-light.svg";
@@ -32,7 +32,9 @@ function reducer(state, action) {
         status: "active",
         questions: data.quizzes[action.payload],
       };
-
+    case "answerClicked":
+      console.log("amswer clicked");
+      return { ...state, hasAnswered: true, answer: action.payload };
     case "checkAnswer":
       console.log(
         "checking answer",
