@@ -6,6 +6,7 @@ export default function Title({ questions, dispatch }) {
         <div
           className={styles.titleItem}
           onClick={() => dispatch({ type: "choosenTopic", payload: index })}
+          key={index}
         >
           <img
             className={styles.titleImg}

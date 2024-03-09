@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: min-content 1fr min-content min-content;
-  /* gap: 3.2rem; */
+
+  gap: 3.2rem;
 }
 
 .qnNumber {
@@ -20,11 +21,17 @@
   color: var(--color-dark-grey);
   font-weight: 500;
   display: grid;
-  grid-template-rows: 1fr min-content;
+  grid-template-rows: min-content 1fr;
+  gap: 2.7rem;
 }
 .progress {
   grid-row: 3/4;
   grid-column: 1/2;
+}
+
+.question,
+.progress {
+  padding-right: 10rem;
 }
 progress {
   -webkit-appearance: none;
@@ -68,7 +75,8 @@ progress {
   font-size: 2.8rem;
   color: var(--color-dark-grey);
   text-align: left;
-  display: flex;
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
   gap: 2rem;
   align-items: center;
 }
@@ -78,4 +86,13 @@ progress {
   background-color: var(--color-mostly-white);
   border-radius: 0.5rem;
   padding: 1.8rem;
+}
+
+.option:hover .optionCount {
+  background-color: var(--color-light-purple) !important;
+  color: var(--color-blue) !important;
+}
+
+.chkIcon {
+  justify-self: end;
 }

@@ -15,6 +15,7 @@ const initalState = {
   choosenTitle: null,
   index: 0,
   answer: null,
+  answerSubmitted: false,
   hasAnswered: false,
   iscorrect: false,
   noofcorrectanswers: 0,
@@ -32,9 +33,11 @@ function reducer(state, action) {
         status: "active",
         questions: data.quizzes[action.payload],
       };
+
     case "answerClicked":
       console.log("amswer clicked");
-      return { ...state, hasAnswered: true, answer: action.payload };
+      return { ...state, answer: action.payload, hasAnswered: true };
+
     case "checkAnswer":
       console.log(
         "checking answer",
@@ -44,21 +47,27 @@ function reducer(state, action) {
 
       return {
         ...state,
-        hasAnswered: true,
+        answerSubmitted: true,
+        hasAnswered: false,
         iscorrect:
-          action.payload === state.questions.questions[state.index].answer,
+          state.answer === state.questions.questions[state.index].answer,
         status:
           state.index + 1 === state.questions.questions.length
             ? "finished"
             : state.status,
         noofcorrectanswers:
-          action.payload === state.questions.questions[state.index].answer
+          state.answer === state.questions.questions[state.index].answer
             ? state.noofcorrectanswers + 1
             : state.noofcorrectanswers,
       };
     case "nextQuestion":
       console.log("next question");
-      return { ...state, index: state.index + 1, hasAnswered: false };
+      return {
+        ...state,
+        index: state.index + 1,
+        hasAnswered: false,
+        answerSubmitted: false,
+      };
     default:
       throw new Error("Action unknown");
   }
@@ -78,6 +87,7 @@ function App() {
       hasAnswered,
       iscorrect,
       noofcorrectanswers,
+      answerSubmitted,
     },
     dispatch,
   ] = useReducer(reducer, initalState);
@@ -128,6 +138,7 @@ function App() {
               answer={answer}
               hasAnswered={hasAnswered}
               iscorrect={iscorrect}
+              answerSubmitted={answerSubmitted}
             />
           </div>
         )}

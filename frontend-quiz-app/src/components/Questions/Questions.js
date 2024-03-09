@@ -1,5 +1,6 @@
 import styles from "./Question.module.css";
 import Button from "../Button/Button";
+import "../../index.css";
 
 export default function Questions({
   questions,
@@ -9,8 +10,9 @@ export default function Questions({
   answer,
   hasAnswered,
   iscorrect,
+  answerSubmitted,
 }) {
-  console.log(numQuestions, index, hasAnswered);
+  console.log(answerSubmitted, hasAnswered);
 
   // function nextButton() {
   //   console.log("next button clicked");
@@ -31,25 +33,90 @@ export default function Questions({
       />
 
       <div className={styles.options}>
-        {questions.options.map((option, index) => (
+        {questions.options.map((option, i) => (
           <button
             key={option}
-            disabled={hasAnswered}
+            disabled={answerSubmitted}
             onClick={() => dispatch({ type: "answerClicked", payload: option })}
             className={styles.option}
+            style={{
+              border: answerSubmitted
+                ? iscorrect
+                  ? option === questions.answer
+                    ? "5px solid var(--color-green)"
+                    : "none"
+                  : option === answer
+                  ? "5px solid var(--color-red)"
+                  : "none"
+                : hasAnswered
+                ? option === answer
+                  ? "5px solid var(--color-blue)"
+                  : "none"
+                : "none",
+            }}
           >
-            <span className={styles.optionCount}>
-              {index === 0
-                ? "A"
-                : String.fromCharCode("A".charCodeAt() + index)}
+            <span
+              className={styles.optionCount}
+              style={{
+                backgroundColor: answerSubmitted
+                  ? iscorrect
+                    ? option === questions.answer
+                      ? "var(--color-green)"
+                      : "none"
+                    : option === answer
+                    ? "var(--color-red)"
+                    : "none"
+                  : hasAnswered
+                  ? option === answer
+                    ? "var(--color-blue)"
+                    : "none"
+                  : "none",
+                color:
+                  answerSubmitted || hasAnswered
+                    ? option === answer
+                      ? "var(--color-white)"
+                      : "var(--color-light-grey)"
+                    : "var(--color-light-grey)",
+              }}
+            >
+              {i === 0 ? "A" : String.fromCharCode("A".charCodeAt() + i)}
             </span>
             <p>{option}</p>
+            {answerSubmitted ? (
+              iscorrect ? (
+                option === answer ? (
+                  <img
+                    className={styles.chkicon}
+                    src="../../assets/images/icon-correct.svg"
+                    alt="icon"
+                  />
+                ) : (
+                  ""
+                )
+              ) : option === questions.answer ? (
+                <img
+                  className={styles.chkicon}
+                  src="../../assets/images/icon-correct.svg"
+                  alt="icon"
+                />
+              ) : option === answer ? (
+                <img
+                  className={styles.chkicon}
+                  src="../../assets/images/icon-incorrect.svg"
+                  alt="icon"
+                />
+              ) : (
+                ""
+              )
+            ) : (
+              ""
+            )}
           </button>
         ))}
       </div>
 
       <div className={styles.button}>
-        {hasAnswered && index + 1 < numQuestions ? (
+        {answerSubmitted && index + 1 < numQuestions ? (
           <Button
             onClick={() => {
               console.log("next button clicked");
@@ -63,7 +130,7 @@ export default function Questions({
             onClick={() => {
               return dispatch({
                 type: "checkAnswer",
-                payload: answer,
+                // payload: answer,
               });
             }}
           >
