@@ -13,6 +13,7 @@ export default function Questions({
   hasAnswered,
   iscorrect,
   answerSubmitted,
+  noanswer,
 }) {
   console.log(answerSubmitted, hasAnswered);
 
@@ -125,7 +126,15 @@ export default function Questions({
             index + 1 === numQuestions && <FinishButton dispatch={dispatch} />
           )
         ) : (
-          <Submit dispatch={dispatch} />
+          <div>
+            <Submit dispatch={dispatch} />
+            {noanswer && (
+              <div className={styles.error}>
+                <img src="../../assets/images/icon-incorrect.svg" alt="error" />
+                <p className={styles.errorMsg}> Please select an answer</p>
+              </div>
+            )}
+          </div>
         )}
       </div>
     </div>

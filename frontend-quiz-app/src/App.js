@@ -21,6 +21,7 @@ const initalState = {
   hasAnswered: false,
   iscorrect: false,
   noofcorrectanswers: 0,
+  noanswer: false,
 };
 
 function reducer(state, action) {
@@ -38,7 +39,12 @@ function reducer(state, action) {
 
     case "answerClicked":
       console.log("amswer clicked");
-      return { ...state, answer: action.payload, hasAnswered: true };
+      return {
+        ...state,
+        answer: action.payload,
+        hasAnswered: true,
+        noanswer: false,
+      };
 
     case "checkAnswer":
       console.log(
@@ -46,6 +52,7 @@ function reducer(state, action) {
         state.index + 1,
         state.questions.questions.length
       );
+      if (!state.hasAnswered) return { ...state, noanswer: true };
 
       return {
         ...state,
@@ -68,6 +75,7 @@ function reducer(state, action) {
         answerSubmitted: false,
         answer: null,
         iscorrect: false,
+        noanswer: false,
       };
     case "finishQuiz":
       console.log(
@@ -103,6 +111,7 @@ function App() {
       iscorrect,
       noofcorrectanswers,
       answerSubmitted,
+      noanswer,
     },
     dispatch,
   ] = useReducer(reducer, initalState);
@@ -135,6 +144,7 @@ function App() {
               hasAnswered={hasAnswered}
               iscorrect={iscorrect}
               answerSubmitted={answerSubmitted}
+              noanswer={noanswer}
             />
           </div>
         )}
