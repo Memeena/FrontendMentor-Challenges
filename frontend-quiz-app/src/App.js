@@ -6,6 +6,8 @@ import "./index.css";
 import { ReactComponent as MoonLight } from "./assets/images/icon-moon-light.svg";
 import { ReactComponent as SunLight } from "./assets/images/icon-sun-light.svg";
 import Main from "./Main";
+import QuizCompleted from "./components/QuizCompleted/QuizCompleted";
+import ChoosenHeading from "./components/ChoosenHeading/ChoosenHeading";
 
 console.log(data);
 
@@ -51,10 +53,7 @@ function reducer(state, action) {
         hasAnswered: false,
         iscorrect:
           state.answer === state.questions.questions[state.index].answer,
-        status:
-          state.index + 1 === state.questions.questions.length
-            ? "finished"
-            : state.status,
+
         noofcorrectanswers:
           state.answer === state.questions.questions[state.index].answer
             ? state.noofcorrectanswers + 1
@@ -67,6 +66,22 @@ function reducer(state, action) {
         index: state.index + 1,
         hasAnswered: false,
         answerSubmitted: false,
+        answer: null,
+        iscorrect: false,
+      };
+    case "finishQuiz":
+      console.log(
+        "Finishing quiz!",
+        state.index,
+        state.questions.questions.length,
+        state.status
+      );
+      return {
+        ...state,
+        status:
+          state.index + 1 === state.questions.questions.length
+            ? "finished"
+            : state.status,
       };
     default:
       throw new Error("Action unknown");
@@ -92,29 +107,10 @@ function App() {
     dispatch,
   ] = useReducer(reducer, initalState);
 
-  const iconbg = {
-    backgroundColor:
-      questions.title === "HTML"
-        ? "#FFF1e9"
-        : questions.title === "CSS"
-        ? "#E0FDEF"
-        : questions.title === "Javascript"
-        ? "#EBF0FF"
-        : "#F6E7FF",
-  };
-
   return (
     <div className="app">
-      {status === "active" && (
-        <div className="choosenHeading">
-          <img
-            src={`${questions.icon}`}
-            style={iconbg}
-            alt="icon"
-            className="iconImage"
-          />
-          <p className="choosenTitle">{choosenTitle}</p>
-        </div>
+      {status !== "ready" && (
+        <ChoosenHeading questions={questions} choosenTitle={choosenTitle} />
       )}
       <div className="mode">
         <SunLight className="icon-sun" />
@@ -144,10 +140,12 @@ function App() {
         )}
 
         {status === "finished" && (
-          <h1>
-            You have reached end of the quiz! scored {noofcorrectanswers} out of
-            {questions.questions.length}
-          </h1>
+          <QuizCompleted
+            questions={questions}
+            choosenTitle={choosenTitle}
+            noofcorrectanswers={noofcorrectanswers}
+            dispatch={dispatch}
+          />
         )}
       </Main>
     </div>

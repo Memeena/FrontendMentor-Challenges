@@ -1,0 +1,12 @@
+.choosenHeading {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 2.8rem;
+  /* justify-content: center; */
+}
+
+.iconImage {
+  border-radius: 1rem;
+  padding: 0.8rem;
+}

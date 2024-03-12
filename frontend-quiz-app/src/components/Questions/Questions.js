@@ -1,6 +1,8 @@
 import styles from "./Question.module.css";
-import Button from "../Button/Button";
 import "../../index.css";
+import NextQuestion from "./NextQuestion";
+import Submit from "./Submit";
+import FinishButton from "./FinishButton";
 
 export default function Questions({
   questions,
@@ -116,26 +118,14 @@ export default function Questions({
       </div>
 
       <div className={styles.button}>
-        {answerSubmitted && index + 1 < numQuestions ? (
-          <Button
-            onClick={() => {
-              console.log("next button clicked");
-              return dispatch({ type: "nextQuestion" });
-            }}
-          >
-            Next Question
-          </Button>
+        {answerSubmitted ? (
+          index + 1 < numQuestions ? (
+            <NextQuestion dispatch={dispatch} />
+          ) : (
+            index + 1 === numQuestions && <FinishButton dispatch={dispatch} />
+          )
         ) : (
-          <Button
-            onClick={() => {
-              return dispatch({
-                type: "checkAnswer",
-                // payload: answer,
-              });
-            }}
-          >
-            Submit answer
-          </Button>
+          <Submit dispatch={dispatch} />
         )}
       </div>
     </div>
