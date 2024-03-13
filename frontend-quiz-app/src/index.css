@@ -102,3 +102,9 @@ h2 {
   background-color: var(--color-blue) !important;
   color: var(--color-white) !important;
 }
+
+@media screen and (max-width: 48em) {
+  .app {
+    padding: 6.4rem;
+  }
+}

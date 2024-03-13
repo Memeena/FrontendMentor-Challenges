@@ -91,13 +91,12 @@ function reducer(state, action) {
             ? "finished"
             : state.status,
       };
+    case "restart":
+      return initalState;
     default:
       throw new Error("Action unknown");
   }
 }
-
-// const iconbg = {
-// };
 
 function App() {
   const [

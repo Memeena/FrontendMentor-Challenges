@@ -25,3 +25,11 @@
   font-weight: 300;
   font-style: italic;
 }
+
+@media screen and (max-width: 48em) {
+  .header {
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, min-content);
+    gap: 6.4rem;
+  }
+}

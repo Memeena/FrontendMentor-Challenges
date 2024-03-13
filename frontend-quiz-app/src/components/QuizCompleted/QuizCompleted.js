@@ -11,15 +11,20 @@ export default function QuizCompleted({
   return (
     <div className={styles.quizCompleted}>
       <div className={styles.heading}>
-        <h1>Quiz completed</h1>
-        <h4>You scored...</h4>
+        <h1 className={styles.mainHead}>Quiz completed</h1>
+        <h4 className={styles.head}>You scored...</h4>
       </div>
       <div className={styles.count}>
         <ChoosenHeading questions={questions} choosenTitle={choosenTitle} />
-        <p>{noofcorrectanswers}</p>
-        <p>out of {questions.questions.length}</p>
+        <p className={styles.correctAnswers}>{noofcorrectanswers}</p>
+        <p className={styles.totalQn}>out of {questions.questions.length}</p>
       </div>
-      <Button onClick={() => dispatch({ type: "restart" })}>Play Again</Button>
+      <Button
+        className={styles.playbtn}
+        onClick={() => dispatch({ type: "restart" })}
+      >
+        Play Again
+      </Button>
     </div>
   );
 }
