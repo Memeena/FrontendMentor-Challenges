@@ -51,3 +51,26 @@
   color: var(--color-light-grey);
   font-size: 2.4rem;
 }
+
+@media screen and (max-width: 31.5em) {
+  .mainHead,
+  .head {
+    font-size: 4rem;
+  }
+
+  .correctAnswers {
+    font-size: 8.8rem;
+  }
+
+  .totalQn {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 48em) {
+  .quizCompleted {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+}

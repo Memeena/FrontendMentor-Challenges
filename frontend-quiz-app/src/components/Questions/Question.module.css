@@ -4,6 +4,7 @@
   grid-template-rows: min-content 1fr min-content min-content;
 
   gap: 3.2rem;
+  /* font-family: "Rubik", sans-serif; */
 }
 
 .qnNumber {
@@ -105,4 +106,40 @@ progress {
   color: var(--color-red);
   font-size: 2.4rem;
   padding-top: 2rem;
+}
+
+@media screen and (max-width: 31.5em) {
+  .qnNumber {
+    font-size: 1.4rem;
+  }
+
+  .qn {
+    font-size: 2rem;
+  }
+
+  .option {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  .optionCount,
+  .option {
+    padding: 1.2rem;
+  }
+  .error {
+    font-size: 1.8rem;
+  }
+}
+@media screen and (max-width: 48em) {
+  .question,
+  .progress {
+    padding-right: 0;
+  }
+  .questions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .options {
+    padding-top: 2rem;
+  }
 }

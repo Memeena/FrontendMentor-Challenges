@@ -46,14 +46,14 @@ export default function Questions({
               border: answerSubmitted
                 ? iscorrect
                   ? option === questions.answer
-                    ? "5px solid var(--color-green)"
+                    ? "3px solid var(--color-green)"
                     : "none"
                   : option === answer
-                  ? "5px solid var(--color-red)"
+                  ? "3px solid var(--color-red)"
                   : "none"
                 : hasAnswered
                 ? option === answer
-                  ? "5px solid var(--color-blue)"
+                  ? "3px solid var(--color-blue)"
                   : "none"
                 : "none",
             }}

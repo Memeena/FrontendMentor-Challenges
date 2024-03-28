@@ -22,3 +22,17 @@
   padding: 0.8rem;
   border-radius: 1rem;
 }
+
+@media screen and (max-width: 31.5em) {
+  .titleName {
+    font-size: 1.8rem;
+  }
+
+  .titleItem {
+    padding: 1.2rem;
+  }
+
+  .titleImg {
+    padding: 0.5rem;
+  }
+}

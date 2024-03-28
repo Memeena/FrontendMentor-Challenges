@@ -10,3 +10,13 @@
   border-radius: 1rem;
   padding: 0.8rem;
 }
+
+@media screen and (max-width: 31.5em) {
+  .choosenHeading {
+    font-size: 1.8rem;
+  }
+
+  .iconImage {
+    padding: 0.57rem;
+  }
+}
