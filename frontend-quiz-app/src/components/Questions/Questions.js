@@ -14,25 +14,59 @@ export default function Questions({
   iscorrect,
   answerSubmitted,
   noanswer,
+  darkMode,
 }) {
-  console.log(answerSubmitted, hasAnswered);
-
+  // console.log("inside questions.js");
+  // console.log("answer submitted:", answerSubmitted);
+  // console.log("has answered:", hasAnswered);
+  // console.log("answer:", answer);
+  console.log(darkMode);
   // function nextButton() {
   //   console.log("next button clicked");
   // }
+  const borderStyle = (option) => ({
+    border: answerSubmitted
+      ? iscorrect
+        ? option === questions.answer
+          ? "3px solid var(--color-green)"
+          : "none"
+        : option === answer
+        ? "3px solid var(--color-red)"
+        : "none"
+      : hasAnswered
+      ? option === answer
+        ? "3px solid var(--color-blue)"
+        : "none"
+      : "none",
+  });
 
   return (
     <div className={styles.questions}>
       <div className={styles.question}>
-        <h5 className={styles.qnNumber}>
+        <h5
+          className={styles.qnNumber}
+          style={{
+            color: darkMode
+              ? "var(--color-very-light-grey)"
+              : "var(--color-light-grey)",
+          }}
+        >
           Question {index + 1} of {numQuestions}
         </h5>
-        <h2 className={styles.qn}>{questions.question}</h2>
+        <h2
+          className={styles.qn}
+          style={{
+            color: darkMode ? "var(--color-white)" : "var(--color-dark-grey)",
+          }}
+        >
+          {questions.question}
+        </h2>
       </div>
       <progress
         className={styles.progress}
         max={numQuestions}
         value={index + Number(answer !== null)}
+        data-mode={`${darkMode}`}
       />
 
       <div className={styles.options}>
@@ -42,21 +76,8 @@ export default function Questions({
             disabled={answerSubmitted}
             onClick={() => dispatch({ type: "answerClicked", payload: option })}
             className={styles.option}
-            style={{
-              border: answerSubmitted
-                ? iscorrect
-                  ? option === questions.answer
-                    ? "3px solid var(--color-green)"
-                    : "none"
-                  : option === answer
-                  ? "3px solid var(--color-red)"
-                  : "none"
-                : hasAnswered
-                ? option === answer
-                  ? "3px solid var(--color-blue)"
-                  : "none"
-                : "none",
-            }}
+            style={borderStyle(option)}
+            data-mode={`${darkMode}`}
           >
             <span
               className={styles.optionCount}
@@ -72,8 +93,8 @@ export default function Questions({
                   : hasAnswered
                   ? option === answer
                     ? "var(--color-blue)"
-                    : "none"
-                  : "none",
+                    : "var(--color-mostly-white)"
+                  : "var(--color-mostly-white)",
                 color:
                   answerSubmitted || hasAnswered
                     ? option === answer
@@ -84,7 +105,9 @@ export default function Questions({
             >
               {i === 0 ? "A" : String.fromCharCode("A".charCodeAt() + i)}
             </span>
-            <p>{option}</p>
+            <p className={styles.optionName} data-mode={`${darkMode}`}>
+              {option}
+            </p>
             {answerSubmitted ? (
               iscorrect ? (
                 option === answer ? (
@@ -131,7 +154,10 @@ export default function Questions({
             {noanswer && (
               <div className={styles.error}>
                 <img src="../../assets/images/icon-incorrect.svg" alt="error" />
-                <p className={styles.errorMsg}> Please select an answer</p>
+                <p className={styles.errorMsg} data-mode={darkMode}>
+                  {" "}
+                  Please select an answer
+                </p>
               </div>
             )}
           </div>

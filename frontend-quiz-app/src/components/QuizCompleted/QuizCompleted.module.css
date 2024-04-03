@@ -9,6 +9,10 @@
   grid-column: 1/2;
   grid-row: 1/-1;
 }
+.head[data-mode="true"],
+.mainHead[data-mode="true"] {
+  color: var(--color-white);
+}
 
 .playbtn {
   grid-column: 2/3;
@@ -28,10 +32,13 @@
   gap: 2rem;
 }
 
+.count[data-mode="true"] {
+  background-color: var(--color-medium-grey);
+}
 .mainHead,
 .head {
-  font-size: 6.4rem;
   color: var(--color-dark-grey);
+  font-size: 6.4rem;
 }
 
 .mainHead {
@@ -47,9 +54,17 @@
   color: var(--color-dark-grey);
 }
 
+.correctAnswers[data-mode="true"] {
+  color: var(--color-white);
+}
+
 .totalQn {
   color: var(--color-light-grey);
   font-size: 2.4rem;
+}
+
+.totalQn[data-mode="true"] {
+  color: var(--color-very-light-grey);
 }
 
 @media screen and (max-width: 31.5em) {

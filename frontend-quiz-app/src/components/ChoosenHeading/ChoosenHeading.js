@@ -1,6 +1,6 @@
 import styles from "./ChoosenHeading.module.css";
 
-export default function ChoosenHeading({ questions, choosenTitle }) {
+export default function ChoosenHeading({ questions, choosenTitle, darkMode }) {
   const iconbg = {
     backgroundColor:
       questions.title === "HTML"
@@ -19,7 +19,14 @@ export default function ChoosenHeading({ questions, choosenTitle }) {
         alt="icon"
         className={styles.iconImage}
       />
-      <p className={styles.choosenTitle}>{choosenTitle}</p>
+      <p
+        className={styles.choosenTitle}
+        style={{
+          color: darkMode ? "var(--color-white)" : "var(--color-dark-grey)",
+        }}
+      >
+        {choosenTitle}
+      </p>
     </div>
   );
 }

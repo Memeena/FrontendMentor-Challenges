@@ -35,7 +35,9 @@
   padding-right: 10rem;
 }
 progress {
+  appearance: none;
   -webkit-appearance: none;
+  border: none;
   width: 100%;
   height: 8px;
   grid-column: 1 / -1;
@@ -69,7 +71,6 @@ progress {
 
 .option {
   border: none;
-  background-color: var(--color-white);
   border-radius: 1rem;
   cursor: pointer;
   padding: 1.8rem 2rem;
@@ -80,6 +81,21 @@ progress {
   grid-template-columns: min-content 1fr min-content;
   gap: 2rem;
   align-items: center;
+}
+.option[data-mode="true"] {
+  background-color: var(--color-medium-grey);
+}
+
+.option[data-mode="false"] {
+  background-color: var(--color-white);
+}
+
+.optionName[data-mode="true"] {
+  color: var(--color-white);
+}
+
+.optionName[data-mode="false"] {
+  color: var(--color-medium-grey);
 }
 
 .optionCount {
@@ -108,6 +124,9 @@ progress {
   padding-top: 2rem;
 }
 
+.errorMsg[data-mode="true"] {
+  color: var(--color-white);
+}
 @media screen and (max-width: 31.5em) {
   .qnNumber {
     font-size: 1.4rem;

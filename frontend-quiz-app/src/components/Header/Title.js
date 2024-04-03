@@ -1,5 +1,5 @@
 import styles from "./Title.module.css";
-export default function Title({ questions, dispatch }) {
+export default function Title({ questions, dispatch, darkMode }) {
   return (
     <div className={styles.title}>
       {questions.quizzes.map((question, index) => (
@@ -7,6 +7,11 @@ export default function Title({ questions, dispatch }) {
           className={styles.titleItem}
           onClick={() => dispatch({ type: "choosenTopic", payload: index })}
           key={index}
+          style={{
+            backgroundColor: darkMode
+              ? "var(--color-medium-grey)"
+              : "var(--color-white)",
+          }}
         >
           <img
             className={styles.titleImg}
@@ -23,7 +28,14 @@ export default function Title({ questions, dispatch }) {
                   : "#F6E7FF",
             }}
           />
-          <p className={styles.titleName}>{question.title}</p>
+          <p
+            className={styles.titleName}
+            style={{
+              color: darkMode ? "var(--color-white)" : "var(--color-dark-grey)",
+            }}
+          >
+            {question.title}
+          </p>
         </div>
       ))}
     </div>

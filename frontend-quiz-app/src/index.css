@@ -30,9 +30,7 @@ html {
 html {
   background-color: var(--color-background);
   /* background-color: red; */
-  background-image: url("../public/assets/images/pattern-background-desktop-light.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* background-image: url("../public/assets/images/pattern-background-desktop-light.svg"); */
   font-family: "Rubik", sans-serif;
 }
 .app {
@@ -41,6 +39,9 @@ html {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: min-content 1fr;
   gap: 10rem;
+  width: 100vw;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .mode {

@@ -11,7 +11,7 @@
 .head {
   font-size: 6.4rem;
   font-weight: 300;
-  color: var(--color-dark-grey);
+  /* color: var(--color-dark-grey); */
   line-height: 1;
 }
 
@@ -21,7 +21,7 @@
 
 .para {
   justify-self: end;
-  color: var(--color-light-grey);
+  /* color: var(--color-light-grey); */
   font-size: 2rem;
   font-weight: 300;
   font-style: italic;
