@@ -55,6 +55,7 @@ html {
   display: flex;
   gap: 1rem;
   align-items: center;
+  cursor: pointer;
 }
 
 .mode-wrapper {
