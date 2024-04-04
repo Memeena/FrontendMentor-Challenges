@@ -16,14 +16,6 @@ export default function Questions({
   noanswer,
   darkMode,
 }) {
-  // console.log("inside questions.js");
-  // console.log("answer submitted:", answerSubmitted);
-  // console.log("has answered:", hasAnswered);
-  // console.log("answer:", answer);
-  console.log(darkMode);
-  // function nextButton() {
-  //   console.log("next button clicked");
-  // }
   const borderStyle = (option) => ({
     border: answerSubmitted
       ? iscorrect
@@ -43,22 +35,10 @@ export default function Questions({
   return (
     <div className={styles.questions}>
       <div className={styles.question}>
-        <h5
-          className={styles.qnNumber}
-          style={{
-            color: darkMode
-              ? "var(--color-very-light-grey)"
-              : "var(--color-light-grey)",
-          }}
-        >
+        <h5 className={styles.qnNumber} data-mode={darkMode}>
           Question {index + 1} of {numQuestions}
         </h5>
-        <h2
-          className={styles.qn}
-          style={{
-            color: darkMode ? "var(--color-white)" : "var(--color-dark-grey)",
-          }}
-        >
+        <h2 className={styles.qn} data-mode={darkMode}>
           {questions.question}
         </h2>
       </div>

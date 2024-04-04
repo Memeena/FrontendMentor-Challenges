@@ -7,11 +7,7 @@ export default function Title({ questions, dispatch, darkMode }) {
           className={styles.titleItem}
           onClick={() => dispatch({ type: "choosenTopic", payload: index })}
           key={index}
-          style={{
-            backgroundColor: darkMode
-              ? "var(--color-medium-grey)"
-              : "var(--color-white)",
-          }}
+          data-mode={darkMode}
         >
           <img
             className={styles.titleImg}
@@ -28,12 +24,7 @@ export default function Title({ questions, dispatch, darkMode }) {
                   : "#F6E7FF",
             }}
           />
-          <p
-            className={styles.titleName}
-            style={{
-              color: darkMode ? "var(--color-white)" : "var(--color-dark-grey)",
-            }}
-          >
+          <p className={styles.titleName} data-mode={darkMode}>
             {question.title}
           </p>
         </div>

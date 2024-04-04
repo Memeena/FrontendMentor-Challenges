@@ -11,20 +11,26 @@
 .head {
   font-size: 6.4rem;
   font-weight: 300;
-  /* color: var(--color-dark-grey); */
+  color: var(--color-dark-grey);
   line-height: 1;
 }
 
+.head[data-mode="true"] {
+  color: var(--color-white);
+}
 .headBold {
   font-weight: 500;
 }
 
 .para {
   justify-self: end;
-  /* color: var(--color-light-grey); */
+  color: var(--color-light-grey);
   font-size: 2rem;
   font-weight: 300;
   font-style: italic;
+}
+.para[data-mode="true"] {
+  color: var(--color-very-light-grey);
 }
 @media screen and (max-width: 31.5em) {
   .head {
@@ -45,6 +51,3 @@
   }
 }
 
-/* @media screen and (max-width: 23.44em) {
-  
-} */
