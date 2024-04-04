@@ -29,10 +29,9 @@ html {
 
 html {
   background-color: var(--color-background);
-  /* background-color: red; */
-  /* background-image: url("../public/assets/images/pattern-background-desktop-light.svg"); */
   font-family: "Rubik", sans-serif;
 }
+
 .app {
   padding: 9.7rem 14rem;
   display: grid;
@@ -42,13 +41,17 @@ html {
   width: 100vw;
   background-size: contain;
   background-repeat: no-repeat;
+  background-color: var(--color-background);
+}
+
+.app[data-mode="true"] {
+  background-color: #313e51;
 }
 
 .mode {
   grid-row: 1/2;
   grid-column: 2/3;
   justify-self: end;
-  /* align-self: self-start; */
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -72,6 +75,17 @@ html {
   left: 0.5rem;
 }
 
+.mode-ball[data-mode="true"] {
+  left: 2.3rem;
+}
+
+.icon-mode {
+  color: var(--color-grey);
+}
+
+.icon-mode[data-mode="true"] {
+  color: var(--color-white);
+}
 .main {
   grid-row: 2/3;
   grid-column: 1/-1;
@@ -86,12 +100,10 @@ h2 {
 }
 
 .correct {
-  /* background-color: var(--color-green) !important; */
   border: 5px solid var(--color-green);
 }
 
 .wrong {
-  /* background-color: var(--color-red) !important; */
   border: 5px solid var(--color-red) !important;
 }
 
