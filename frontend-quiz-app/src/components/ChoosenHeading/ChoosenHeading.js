@@ -19,12 +19,7 @@ export default function ChoosenHeading({ questions, choosenTitle, darkMode }) {
         alt="icon"
         className={styles.iconImage}
       />
-      <p
-        className={styles.choosenTitle}
-        style={{
-          color: darkMode ? "var(--color-white)" : "var(--color-dark-grey)",
-        }}
-      >
+      <p className={styles.choosenTitle} data-mode={darkMode}>
         {choosenTitle}
       </p>
     </div>
